@@ -14,13 +14,11 @@ class Name(Field):
 
 
 class Phone(Field):
-    def __init__(self, value):
-            
-        super().__init__(value)
-    
-    def validate(self):
-        if len(self.value) != 10 or not self.value.isdigit():
+    def __init__(self, value):  
+        if len(value) != 10:
             raise ValueError('Phone number must be 10 digits long')
+        super().__init__(value)
+
     
 		
 
@@ -38,6 +36,7 @@ class Record:
     
 
     def edit_phone(self, old_phone, new_phone):
+        self.new_phone = Phone(new_phone)
         for phone in self.phones:
             if phone.value == old_phone:
                 phone.value = new_phone
