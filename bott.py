@@ -31,7 +31,7 @@ class Record:
     def add_phone(self, phone):
         self.phones.append(Phone(phone))
 
-    def remove_contact(self, phone):
+    def remove_phone(self, phone):
         self.phones = [p for p in self.phones if p.value != phone]
     
 
